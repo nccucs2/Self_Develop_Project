@@ -184,21 +184,29 @@ a:hover, a:active {
 <div class="fish" id="fish"></div>
 <div class="fish" id="fish2"></div>
 
-<form id="waterform" method="post">
-
+<form id="waterform" method="GET">
+<form name='my_form' action='/login' method='GET'>
 <div class="formgroup" id="name-form">
-    <label for="name">Id*</label>
-    <input type="text" id="name" name="name" />
+
+    <label for="usr_id">Id*</label>
+    <input type="text" id="usr_id" name="usr_id" />
+
 </div>
+
 <div style="color:black;margin-left:15px;"><b>@nccu.edu.tw</b></div>
-<div class="formgroup" id="email-form">
-    <label for="email">Password*</label>
-    <input type="email" id="email" name="email" />
+
+<div class="formgroup" id="password-form">
+
+    <label for="usr_pass">Password*</label>
+    <input type="password" id="usr_pass" name="usr_pass" />
+
 </div>
+
 <div>
 	<input type="submit" value="Login" />
 </div>
-
 <a href="">Create Account</a>
+</form>
+
 
 </html>

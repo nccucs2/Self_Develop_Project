@@ -4,22 +4,38 @@ from django.template import RequestContext
 from django.template import Context, Template
 from django.template.loader import get_template
 from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib import auth
+from django.contrib import messages
 def login(request):
     template = get_template('login.html')
-    user_id = "123"
-    user_password = "345"
+    not_verified = False
+    if request.user.is_authenticated:
+        return HttpResponseRedirect('/student/')
     try:
-        user_id = request.GET['usr_id']
-        user_password = request.GET['usr_pass']
-        #print(user_id)
-        #print(user_password)
+        username = request.GET['usr_id']
+        password = request.GET['usr_pass']
+
+        user = auth.authenticate(username=username, password=password)
     except:
         user_id = None
         user_password = None
-    #print(user_id)
-    #print(user_password)
-    html = template.render(locals())
-    return HttpResponse(html)
+        user = None
+    if user is not None and user.is_active:
+        auth.login(request, user)
+
+        return HttpResponseRedirect('/student/')
+    else:
+        """
+        messages.error(request,'username or password not correct')
+        return HttpResponseRedirect('/login/')
+        """
+        html = template.render(locals())
+        return HttpResponse(html)
+
+        #return render_to_response('login.html')
+def logout(request):
+    auth.logout(request)
+    return HttpResponseRedirect('/student/')
 
 def student(request):
     template = get_template('student.html')

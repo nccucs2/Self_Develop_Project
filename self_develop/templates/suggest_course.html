@@ -178,38 +178,10 @@
         </style>
     </head>
 
-    {% if request.user.is_authenticated %}
-    <a href="/accounts/logout/">登出</a>
-
-    {% endif %}
-    <header>
-          <h1>Welcome to Inccu</h1>
-    </header>
-
-    <!--<div id="form">-->
+    <h1> 推薦課程 </h1>
     <div class="fish" id="fish"></div>
     <div class="fish" id="fish2"></div>
-    <form id="waterform" method="GET">
-       <div class="formgroup" id="name-form">
-        {% if request.user.is_authenticated %}
-            <p >
-              {{request.user}} 您已經登入囉
-           </p>
-           <p>
-             <div class = content>
-             <a href="/student/grade/">成績列表</a>
-             <a href="/student/gpa/">GPA</a>
-             <a href="/student/course/">已修課程</a>
-             <a href="/student/suggest_course">建議課程</a>
-           </div>
-             <!--<a href="/accounts/logout/">登出</a>-->
-           </p>
 
-        {% else %}
-            <p>您尚未登入喔~<a href="/login/">登入</a></p>
-
-        {% endif %}
-      </div>
 
 
 

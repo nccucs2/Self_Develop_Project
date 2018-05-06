@@ -8,13 +8,12 @@ from django.contrib import auth
 from django.contrib import messages
 def login(request):
     template = get_template('login.html')
-    not_verified = False
+
     if request.user.is_authenticated:
         return HttpResponseRedirect('/student/')
     try:
         username = request.GET['usr_id']
         password = request.GET['usr_pass']
-
         user = auth.authenticate(username=username, password=password)
     except:
         user_id = None
@@ -22,13 +21,8 @@ def login(request):
         user = None
     if user is not None and user.is_active:
         auth.login(request, user)
-
         return HttpResponseRedirect('/student/')
     else:
-        """
-        messages.error(request,'username or password not correct')
-        return HttpResponseRedirect('/login/')
-        """
         html = template.render(locals())
         return HttpResponse(html)
 

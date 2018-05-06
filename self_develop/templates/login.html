@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+ <title>Login</title>
 <head>
   <style>
   body, html{
@@ -42,8 +43,8 @@ h1{
  height: 104px;
  margin-left: -235px;
  position: absolute;
- animation: myfirst 24s;
- -webkit-animation: myfirst 24s;
+ animation: myfirst 36s;
+ -webkit-animation: myfirst 36s;
  animation-iteration-count: infinite;
  -webkit-animation-iteration-count: infinite;
  animation-timing-function: linear;
@@ -58,6 +59,11 @@ h1{
  top: 260px;
  animation-delay: 12s;
  -webkit-animation-delay: 12s;
+}
+#fish3{
+ top: 260px;
+ animation-delay: 24s;
+ -webkit-animation-delay: 24s;
 }
 
 
@@ -176,13 +182,14 @@ a:hover, a:active {
   </style>
 </head>
 <header>
-	<h1>INCCU</h1>
+	<b><h1>INCCU</h1></b>
 </header>
 
 <div id="form">
 
 <div class="fish" id="fish"></div>
 <div class="fish" id="fish2"></div>
+<div class='fish' id='fish3'></div>
 
 <form id="waterform" method="GET">
 <form name='my_form' action='/login' method='GET'>
@@ -190,7 +197,7 @@ a:hover, a:active {
 <div class="formgroup" id="name-form">
 
     <label for="usr_id">Id*</label>
-    <input type="text" id="usr_id" name="usr_id" />
+    <input type="text" id="usr_id" name="usr_id" required>
 
 </div>
 
@@ -199,16 +206,19 @@ a:hover, a:active {
 <div class="formgroup" id="password-form">
 
     <label for="usr_pass">Password*</label>
-    <input type="password" id="usr_pass" name="usr_pass" />
+    <input type="password" id="usr_pass" name="usr_pass" required>
 
 </div>
 
 <div>
-	<input type="submit" value="Login" />
+	<input type="submit" value="Login" >
 </div>
 
 <a href="">Create Account</a>
+{% if request.user.is_is_anonymous %}
+            <p>登入失敗</p>
 
+{% endif %}
 
 
 </form>

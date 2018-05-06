@@ -191,9 +191,9 @@ a:hover, a:active {
 <div class="fish" id="fish2"></div>
 <div class='fish' id='fish3'></div>
 
-<form id="waterform" method="GET">
-<form name='my_form' action='/login' method='GET'>
 
+<form name='my_form' action='/login/' method='POST'>
+    {% csrf_token %}
 <div class="formgroup" id="name-form">
 
     <label for="usr_id">Id*</label>
@@ -208,6 +208,8 @@ a:hover, a:active {
     <label for="usr_pass">Password*</label>
     <input type="password" id="usr_pass" name="usr_pass" required>
 
+
+
 </div>
 
 <div>
@@ -218,7 +220,17 @@ a:hover, a:active {
 {% if request.user.is_is_anonymous %}
             <p>登入失敗</p>
 
-{% endif %}
+{% for message in messages %}
+
+                <div class="alert alert-success">
+                    <a class="close" href="" data-dismiss="alert">×</a>
+
+                    {{ message }}
+
+                </div>
+        {% endfor %}
+
+{%endif%}
 
 
 </form>

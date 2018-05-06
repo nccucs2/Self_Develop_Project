@@ -27,7 +27,7 @@ def login(request):
             return HttpResponseRedirect('/student/')
     else:
         if request.POST:
-            messages.error(request,'帳號或密碼錯誤')
+            messages.error(request,'帳號或密碼錯誤!!')
         return render(request,'login.html',)
 
         """

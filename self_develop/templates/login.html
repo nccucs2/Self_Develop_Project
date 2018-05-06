@@ -174,7 +174,17 @@ a:link, a:visited {
     margin-right:105px;
     margin-top:15px;
 }
-
+.error{
+  background-color: red;
+  color: white;
+  padding: 3px 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 25px;
+  margin-left:120px;
+  margin-top:15px;
+}
 
 a:hover, a:active {
     background-color: black;
@@ -192,12 +202,13 @@ a:hover, a:active {
 <div class='fish' id='fish3'></div>
 
 
-<form name='my_form' action='/login/' method='POST'>
+<form name='my_form' action='/login/' method='POST' >
     {% csrf_token %}
 <div class="formgroup" id="name-form">
 
     <label for="usr_id">Id*</label>
-    <input type="text" id="usr_id" name="usr_id" required>
+    <input type="text" id="usr_id" name="usr_id"  autocomplete="off"
+    readonly onfocus="this.removeAttribute('readonly')">
 
 </div>
 
@@ -206,7 +217,8 @@ a:hover, a:active {
 <div class="formgroup" id="password-form">
 
     <label for="usr_pass">Password*</label>
-    <input type="password" id="usr_pass" name="usr_pass" required>
+    <input type="password" id="usr_pass" name="usr_pass"   autocomplete="off"
+    readonly onfocus="this.removeAttribute('readonly')">
 
 
 
@@ -217,20 +229,16 @@ a:hover, a:active {
 </div>
 
 <a href="">Create Account</a>
-{% if request.user.is_is_anonymous %}
-            <p>登入失敗</p>
+
 
 {% for message in messages %}
-
-                <div class="alert alert-success">
+<span class="error">{{message}}</span>
+                <!--<div class="alert alert-success">
                     <a class="close" href="" data-dismiss="alert">×</a>
+                </div>-->
+{% endfor %}
 
-                    {{ message }}
 
-                </div>
-        {% endfor %}
-
-{%endif%}
 
 
 </form>

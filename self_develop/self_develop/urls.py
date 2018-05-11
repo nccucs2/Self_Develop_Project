@@ -17,13 +17,15 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.urls import path
 from mainsite import views
+from mainsite import grade
+from mainsite import gpa
 urlpatterns = [
     url(r'^login/$', views.login),
     url(r'^student/$',views.student),
     url(r'^accounts/logout/$',views.logout),
     url('admin/', admin.site.urls),
-    url(r'^student/grade/$',views.grade),
-    url(r'^student/gpa/$',views.gpa),
+    url(r'^student/grade/$',grade.grade),
+    url(r'^student/gpa/$',gpa.gpa),
     url(r'^student/course/$',views.course),
     url(r'^student/suggest_course/$',views.suggest_course),
 ]

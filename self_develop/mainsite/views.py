@@ -45,16 +45,6 @@ def logout(request):
 
 def student(request):
     return render(request,'student.html')
-    """
-    template = get_template('student.html')
-    html = template.render(locals())
-    return HttpResponse(html)
-    """
-def grade(request):
-    return render(request,'grade.html')
-
-def gpa(request):
-    return render(request,'gpa.html')
 
 def course(request):
     return render(request,'course.html')
